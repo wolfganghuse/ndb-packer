@@ -1,0 +1,15 @@
+# Install/uninstall with win_package
+- name: Create temp folder
+  win_file:
+    path: C:\temp
+    state: directory
+
+- name: Download the 7-Zip package
+  win_get_url:
+    url: https://www.7-zip.org/a/7z2201-x64.msi
+    dest: C:\temp\7z.msi
+
+- name: Ensure 7-Zip is installed through win_package
+  win_package:
+    path: C:\temp\7z.msi
+    state: present
